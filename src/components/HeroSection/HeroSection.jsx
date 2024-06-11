@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import axios from 'axios';
 import "./HeroSection.css";
 
 function HeroSection() {
@@ -12,29 +12,28 @@ function HeroSection() {
         {
             image: "https://tse1.mm.bing.net/th?id=OIP.Ze9KVVHvQ48CzTTljrl8FAAAAA&pid=Api&P=0&h=180",
             title: "audio-visual production",
-            text:  "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
+            text: "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
         },
         {
             image: "https://tse1.mm.bing.net/th?id=OIP.Ze9KVVHvQ48CzTTljrl8FAAAAA&pid=Api&P=0&h=180",
             title: "translation services",
-            text:  "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
+            text: "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
         },
         {
             image: "https://tse1.mm.bing.net/th?id=OIP.Ze9KVVHvQ48CzTTljrl8FAAAAA&pid=Api&P=0&h=180",
             title: "graphic design",
-            text:  "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
+            text: "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
         },
         {
             image: "https://tse1.mm.bing.net/th?id=OIP.Ze9KVVHvQ48CzTTljrl8FAAAAA&pid=Api&P=0&h=180",
             title: "research & analytics",
-            text:  "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
+            text: "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
         },
         {
             image: "https://tse1.mm.bing.net/th?id=OIP.Ze9KVVHvQ48CzTTljrl8FAAAAA&pid=Api&P=0&h=180",
             title: "data processing",
-            text:  "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
+            text: "Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,"
         }
-        
     ]);
 
     const [email, setEmail] = useState('');
@@ -62,24 +61,22 @@ function HeroSection() {
         }
 
         try {
-            const response = await fetch('http://34.225.132.160:8002/api', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-
-            const data = await response.json();
-
-            if (response.status === 422) {
-                setError(data.message);
-            } else if (response.status === 200) {
+            const response = await axios.post('http://34.225.132.160:8002/api', { email });
+            console.log('Response:', response);  // Log the entire response object
+            if (response.status === 200) {
+                console.log('Status 200: Form submitted successfully');
                 setSuccessMessage(true);
                 setEmail('');
             }
         } catch (err) {
-            setError('An error occurred. Please try again.');
+            console.error('Error Response:', err.response);  // Log the entire error response object
+            if (err.response && err.response.status === 422) {
+                console.log('Status 422: Email is incorrect');
+                setError(err.response.data.message);
+            } else {
+                console.log('An error occurred:', err.message);  // Log the error message
+                setError('An error occurred. Please try again.');
+            }
         }
     };
 
