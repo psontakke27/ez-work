@@ -203,7 +203,7 @@ form {
     font-size: 1.5rem;
     cursor: pointer;
 }
-@media screen and (max-width: 55em) {
+@media screen and (max-width: 45em) {
     .heroSection {
         width: 90%;
     }
@@ -218,7 +218,7 @@ form {
     }
 }
 
-@media screen and (max-width: 35em) {
+@media screen and (max-width: 30em) {
     .cards {
         grid-template-columns: 1fr;
     }
