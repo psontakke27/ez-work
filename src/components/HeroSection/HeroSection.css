@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    line-height: 1.5;
+}
+
+.heroSection {
+    width: 93%;
+    margin: 3rem auto;
+}
+
+.heroSection_box {
+    display: flex;
+    gap: 2rem;
+}
+
+.heroSection_box_left,
+.heroSection_box_right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 1rem;
+}
+
+.heroSection_box_left img {
+    width: 256px;
+    height: auto;
+}
+
+.heroSection_box_left h2 {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.heroSection_box_left p {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.form-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+form {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+.input-group{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    column-gap: 1.5rem;
+}
+
+.input-group input[type="email"] {
+    height: 40px;
+    width: 250px;
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    gap: 2rem;
+    }
+
+.input-group button[type="submit"] {
+    height: 40px;
+    width: 120px; 
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #db572f;
+    color: white;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    background-color: #fff;
+    padding: 1.6rem;
+    border-radius: 1rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #262248;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.3s;
+    border: 2px solid transparent;
+    height: 200px; 
+}
+
+.card h1 {
+    font-size: 50px;
+    line-height: 60px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.card h3 {
+    margin-left: 1rem; 
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin: 10px 0;
+    color: rgb(101, 101, 207);
+}
+
+.card p {
+    margin-bottom: 2px;
+    color: white;
+    font-size: 1rem;
+    overflow: hidden; 
+}
+
+.card-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+}
+
+.card:hover {
+    border-color: #131418;
+}
+
+@media screen and (max-width: 55em) {
+    .heroSection {
+        width: 90%;
+    }
+
+} 
+
+.card:hover {
+    border-color: #131418;
+}
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    text-align: center;
+}
+
+.modal-content p {
+    color: green; 
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+@media screen and (max-width: 55em) {
+    .heroSection {
+        width: 90%;
+    }
+
+    .heroSection_box {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 35em) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    .input-group input[type="email"] {
+        width: calc(100% - 130px);
+    }
+}
+
+
