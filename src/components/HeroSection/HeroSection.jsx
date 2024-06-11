@@ -62,19 +62,24 @@ function HeroSection() {
 
         try {
             const response = await axios.post('http://34.225.132.160:8002/api', { email });
-            console.log('Response:', response);  // Log the entire response object
+            console.log('Response:', response);  
             if (response.status === 200) {
                 console.log('Status 200: Form submitted successfully');
                 setSuccessMessage(true);
                 setEmail('');
             }
         } catch (err) {
-            console.error('Error Response:', err.response);  // Log the entire error response object
-            if (err.response && err.response.status === 422) {
-                console.log('Status 422: Email is incorrect');
-                setError(err.response.data.message);
+            console.error('Error:', err); 
+            if (err.response) {
+                console.error('Error Response:', err.response); 
+                if (err.response.status === 422) {
+                    console.log('Status 422: Email is incorrect');
+                    setError(err.response.data.message);
+                } else {
+                    setError('An error occurred. Please try again.');
+                }
             } else {
-                console.log('An error occurred:', err.message);  // Log the error message
+                console.error('Error Message:', err.message);  
                 setError('An error occurred. Please try again.');
             }
         }
